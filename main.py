@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-from st_keyup import st_keyup
 
 df = pd.read_csv("df6_pairs.csv")
 df = df.dropna(subset="Clue").reset_index(drop=True)
