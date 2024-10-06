@@ -1,0 +1,7 @@
+[global]
+showWarningOnDirectExecution = false
+
+[server]
+#fileWatcherType = "poll"
+headless = true
+runOnSave = true  # is this about the config file only?
