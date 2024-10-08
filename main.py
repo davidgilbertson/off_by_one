@@ -1,9 +1,11 @@
 import pandas as pd
 import streamlit as st
 
+# TODO (@davidgilbertson): cache this, idiot
 df = pd.read_csv("df6_pairs.csv")
 df = df.dropna(subset="Clue").reset_index(drop=True)
-df = df[df.Quality.eq(3)]
+# df = df[df.Quality.eq(3)]
+item_count = len(df)
 
 
 def int_to_ordinal(n):
@@ -34,6 +36,7 @@ max_hints = word_length + 1
 diff_position = pattern.index("_")
 hint_letter_pos = 0
 
+# TODO (@davidgilbertson): add an info panel, use getaway comeback as an example, remove from data.
 
 st.title(f"{current_question.Clue}")
 
@@ -114,7 +117,7 @@ def change_questions(delta):
     st.session_state.has_guessed = False
 
 
-left, right = st.columns(2)
+left, mid, right = st.columns([3, 1, 3], vertical_alignment="center")
 with left:
     if st.session_state.current_q_index > 0:
         st.button(
@@ -122,6 +125,10 @@ with left:
             use_container_width=True,
             on_click=lambda: change_questions(-1),
         )
+
+with mid:
+    pos = f"{st.session_state.current_q_index + 1}/{item_count}"
+    st.html(f"<div style='text-align: center'>{pos}</div>")
 
 with right:
     if st.session_state.current_q_index < len(df) - 1:
