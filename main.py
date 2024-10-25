@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 # TODO (@davidgilbertson): cache this, idiot
-df = pd.read_csv("df6_pairs.csv")
+df = pd.read_csv("data/df6_pairs.csv")
 df = df.dropna(subset="Clue").reset_index(drop=True)
 # df = df[df.Quality.eq(3)]
 item_count = len(df)
@@ -111,6 +111,8 @@ if st.session_state.hint_level > 6:
 
 
 def change_questions(delta):
+    # TODO (@davidgilbertson): if you click the button fast enough, it goes past the end of the DF.
+    #  So this should check to see if we're out of range
     st.session_state.guess_input = ""
     st.session_state.current_q_index += delta
     st.session_state.hint_level = 0

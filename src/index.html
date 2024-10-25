@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Off by one</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+<div class="panel">
+    <div class="card">
+        <p class="label clue-label">Clue</p>
+        <p id="clue"></p>
+
+        <label>
+            <span class="label answer-label">Answer</span>
+            <input autocomplete="off" id="answer"></input>
+        </label>
+
+        <div id="status"></div>
+        <button id="help-button">🛈</button>
+    </div>
+
+
+    <div class="section hint-section">
+        <button id="hint" class="button">Give me a hint</button>
+        <div id="hints"></div>
+    </div>
+
+    <div class="prev-next-buttons">
+        <button id="prev" class="button" disabled>Previous</button>
+        <div id="counter"></div>
+        <button id="next" class="button">Next</button>
+    </div>
+</div>
+<div id="help" hidden>
+    <div id="help-background" class="overlay">
+        <div class="help-content">
+            <button id="help-close-button">×</button>
+            <h1>How it works</h1>
+            <p>You will be given a clue, like '<strong>friendly peacock</strong>'.</p>
+            <p>The answer is a pair of words that are the same, except for one letter (they're <i>off by one</i>).</p>
+            <p>Naturally, the two words are the same length.</p>
+            <p>You can get a series of hints by clicking the 'Hint' button.</p>
+            <p>For example, the answer to the above clue is made of words with 8 letters.</p>
+            <p>The first letter is 'P', the second is different, and so on.</p>
+            <p>The answer in this case is '<strong>pleasant pheasant</strong>'.</p>
+        </div>
+    </div>
+</div>
+
+<script src="word_data.js"></script>
+<script src="main.js"></script>
+<script src="reload.js"></script>
+</body>
+</html>
